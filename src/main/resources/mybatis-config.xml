@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--实现mybatis与数据库的连接  -->
+<configuration>
+    <!-- 引入属性配置文件 -->
+    <properties resource="db-config.properties"/>
+    <!-- 指定日志的具体实现 -->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+        <!--<setting name="logImpl" value="LOG4J2"/>-->
+    </settings>
+    <typeAliases>
+        <package name="me.ifight.bean"/>
+    </typeAliases>
+
+    <environments default="development">
+        <environment id="development">
+            <!-- 采用JDBC管理事务-->
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="${mysql.driver}"/>
+                <property name="url" value="${mysql.url}"/>
+                <property name="username" value="${mysql.username}"/>
+                <property name="password" value="${mysql.password}"/>
+            </dataSource>
+        </environment>
+
+    </environments>
+    <!-- 注册mapper -->
+    <mappers>
+        <mapper resource="mybatisMapper/ProjectMapper.xml"/>
+    </mappers>
+</configuration>

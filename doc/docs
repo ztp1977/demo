@@ -1,0 +1,15 @@
+POJO：plain old java object，该文件包含实体类的属性和对应属性的set、get方法，但是没有业务逻辑。
+
+VO：View Object，显示层对象。xxxVO中的xxx一般为网页名称。
+
+DO：Data Object，数据对象。xxxDO中的xxx一般为数据表名。
+
+Controller层：叫做控制层，负责请求转发，接受页面过来的参数，传给Service处理，接到返回值，再传给页面。 即用于接口暴露。
+一般在Spring项目里，使用@RequestMapping注解来暴露接口。可以看作是程序的入口。将具体的执行转发给Service层。
+
+DAO：叫数据访问层,全称为data access object，属于一种比较底层，比较基础的操作，具体到对于某个表、某个实体的增删改查，不涉及业务逻辑，只是达到按某个条件获得指定数据的要求。
+
+View层叫做表示层，此层与控制层结合比较紧密，需要二者结合起来协同工发。View层主要负责前台jsp页面的表示。
+表示层（View\Web） 调用 控制层（Controller），控制层（Controller）调用业务层（Service），业务层（Service）调用数据访问层（Dao）
+
+Mapper=DAO层，和数据库进行交互
